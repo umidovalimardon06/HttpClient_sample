@@ -3,7 +3,6 @@ package Group.Model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
 
 @AllArgsConstructor
 @Builder
@@ -20,5 +19,25 @@ public class Group {
                 ", name='" + name + '\'' +
                 ", level=" + level +
                 '}';
+    }
+
+    @AllArgsConstructor
+    @Data
+    @Builder
+    public static class Student {
+        private String name;
+        private int age;
+        private double gpa;
+        private long groupId;
+
+        @Override
+        public String toString() {
+            return "Student{" +
+                    "groupId=" + groupId +
+                    ", gpa=" + gpa +
+                    ", age=" + age +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 }
