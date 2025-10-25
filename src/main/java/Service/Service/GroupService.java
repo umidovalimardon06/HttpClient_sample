@@ -6,10 +6,8 @@ import Group.Utill.AppUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -44,18 +42,15 @@ public class GroupService {
                     .POST(HttpRequest.BodyPublishers.ofString(json))
                     .build();
 
-            for (int i = 1; i < 100_000 ; i++) {
-                var response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-                System.out.println(response.statusCode());
-            }
+            var response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
-            /*if (response.statusCode() == 201) {
+            if (response.statusCode() == 201) {
                 System.out.println("Create command executed");
                 Group group = GSON.fromJson(response.body(), Group.class);
                 System.out.println(group);
             }
             else System.out.println("External error !");
-            System.out.println("-------------------");*/
+            System.out.println("-------------------");
 
         } catch (IOException | InterruptedException e) {
             System.out.println("Error on Crete method");

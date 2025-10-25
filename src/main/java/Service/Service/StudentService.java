@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-
 import static java.lang.System.out;
 import static java.net.http.HttpRequest.BodyPublishers.ofString;
 import static java.net.http.HttpResponse.BodyHandlers;
@@ -17,6 +16,7 @@ public class StudentService {
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
     private static final String URL_BASE = "http://localhost:8080/api/students";
     private static final Gson GSON = new GsonBuilder().create();
+
 
     /* --------------------------| CRUD OPERATIONS |--------------------------  */
 
@@ -39,7 +39,6 @@ public class StudentService {
                 .build();
 
         String json = GSON.toJson(request);
-        out.println("\nSending JSON: " + json);
 
         try {
             var httpRequest = HttpRequest.newBuilder()
@@ -224,6 +223,8 @@ public class StudentService {
     }
 
     /* --------------------------| CRUD OPERATIONS |--------------------------  */
+
+
 
     /* Run method to display menu */
     public static void run() {
